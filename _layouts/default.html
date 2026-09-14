@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ site.title }}</title>
+<meta name="description" content="{{ site.description }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+{%- assign profile = site.data.profile -%}
+{%- assign research = site.data.research -%}
+{%- assign publications = site.data.publications -%}
+{%- assign teaching = site.data.teaching -%}
+{%- assign news = site.data.news -%}
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="id-block">
+      {%- if profile.initials and profile.initials != "" %}
+      <div class="monogram">{{ profile.initials }}</div>
+      {%- endif %}
+      <h1>{{ profile.name }}</h1>
+      {%- if profile.role and profile.role.size > 0 %}
+      <p class="role">{{ profile.role | join: "<br>" }}</p>
+      {%- endif %}
+    </div>
+
+    <nav class="sidebar-nav" aria-label="Section navigation">
+      <a href="#about">About</a>
+      {%- if research.size > 0 %}
+      <a href="#research">Research</a>
+      {%- endif %}
+      {%- if publications.size > 0 %}
+      <a href="#publications">Publications</a>
+      {%- endif %}
+      {%- if teaching.size > 0 %}
+      <a href="#teaching">Teaching</a>
+      {%- endif %}
+      {%- if news.size > 0 %}
+      <a href="#news">News</a>
+      {%- endif %}
+    </nav>
+
+    <div class="contact-block">
+      {%- if profile.email and profile.email != "" %}
+      <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+      {%- endif %}
+      {%- for link in profile.links %}
+      <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
+      {%- endfor %}
+      {%- if profile.location and profile.location != "" %}
+      <span>{{ profile.location }}</span>
+      {%- endif %}
+    </div>
+  </aside>
+
+  <main>
+
+    <section id="about">
+      {%- if page.lede and page.lede != "" %}
+      <p class="lede">{{ page.lede }}</p>
+      {%- endif %}
+      <div class="about-text">
+        {{ content }}
+      </div>
+    </section>
+
+    {%- if research.size > 0 %}
+    <section id="research">
+      <h2>Research</h2>
+      <div class="research-grid">
+        {%- for item in research %}
+        <div class="research-item">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+
+    {%- if publications.size > 0 %}
+    <section id="publications">
+      <h2>Publications</h2>
+      {%- assign previous_year = "" %}
+      {%- for pub in publications %}
+      {%- if pub.year != previous_year %}
+      <p class="pub-year">{{ pub.year }}</p>
+      {%- assign previous_year = pub.year %}
+      {%- endif %}
+      <div class="pub">
+        <span class="pub-index">{{ forloop.index }}</span>
+        <div class="pub-body">
+          <p class="pub-title">
+            {%- if pub.url and pub.url != "" -%}
+            <a href="{{ pub.url }}">{{ pub.title }}</a>
+            {%- else -%}
+            {{ pub.title }}
+            {%- endif -%}
+          </p>
+          <p class="pub-venue">{{ pub.authors }} — <em>{{ pub.venue }}</em></p>
+          {%- if pub.links and pub.links.size > 0 %}
+          <p class="pub-links">
+            {%- for link in pub.links %}
+            <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
+            {%- endfor %}
+          </p>
+          {%- endif %}
+        </div>
+      </div>
+      {%- endfor %}
+    </section>
+    {%- endif %}
+
+    {%- if teaching.size > 0 %}
+    <section id="teaching">
+      <h2>Teaching</h2>
+      {%- for course in teaching %}
+      <div class="course">
+        {%- if course.code and course.code != "" %}
+        <div class="course-code">{{ course.code }}</div>
+        {%- endif %}
+        <h3 class="course-name">{{ course.name }}</h3>
+        {%- if course.description and course.description != "" %}
+        <p class="course-desc">{{ course.description }}</p>
+        {%- endif %}
+      </div>
+      {%- endfor %}
+    </section>
+    {%- endif %}
+
+    {%- if news.size > 0 %}
+    <section id="news">
+      <h2>News</h2>
+      <div class="news-list">
+        {%- for item in news %}
+        <div class="news-item">
+          <span class="news-date">{{ item.date }}</span>
+          <span class="news-text">{{ item.text }}</span>
+        </div>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+
+    <footer>
+      Last updated {{ site.time | date: "%B %Y" }}. {{ site.footer_note }}
+    </footer>
+
+  </main>
+
+</div>
+
+</body>
+</html>

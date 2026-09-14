@@ -1,0 +1,27 @@
+# Who you are. Shown in the left sidebar on every page.
+
+name: Davide Bazzana
+
+# Two letters shown in the round badge above your name.
+initials: DB
+
+# One entry per line under your name (position, department, institution...).
+role:
+  - PhD Student
+  - Department of Computer, Control and Management Engineering
+  - Sapienza University of Rome
+
+# Contact email. Leave empty ("") to hide it.
+email: d.bazzana@diag.uniroma1.it
+
+# Links shown under the email. Add or remove entries freely.
+links:
+  - label: Google Scholar
+    url: https://scholar.google.com/citations?hl=de&user=UG1nZ3kAAAAJ
+  - label: GitHub
+    url: https://github.com/davidebazzana
+  - label: ORCID
+    url: https://orcid.org/0009-0007-8008-8151
+
+# Free text shown after the links (office, address...). Leave empty to hide.
+location: 

@@ -1,0 +1,22 @@
+# Publications, shown in the order written here and grouped by year
+# (a year heading is printed whenever the year changes, so keep entries
+# for the same year together and list newest first).
+#
+# Fields:
+#   title    (required)
+#   authors  (required)  free text, e.g. "Bazzana, D., Rossi, M."
+#   venue    (required)  journal, conference, "PhD thesis, ..." etc.
+#   year     (required)
+#   url      (optional)  the title becomes a link to it
+#   links    (optional)  extra small links after the venue, e.g. PDF, code, slides
+#
+# Delete all entries to hide the section.
+
+- title: GlideRX: Enhancing Situation Awareness for Collision Prevention in Glider Flight through Extended Reality
+  authors: Bazzana, D., Beraldi, R., Angelini, M.
+  venue: IUI '25: Proceedings of the 30th International Conference on Intelligent User Interfaces
+  year: 2025
+  url: https://doi.org/10.1145/3708359.3712127
+  links:
+    - label: Code
+      url: https://github.com/XAIber-lab/GlideRX

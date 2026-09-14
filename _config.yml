@@ -1,0 +1,16 @@
+# Site-wide settings. Edit the values, keep the keys.
+title: Davide Bazzana
+description: Personal research page of Davide Bazzana.
+lang: en
+url: "https://davidebazzana.github.io"
+baseurl: ""
+
+# Short line shown in the page footer, after the "Last updated" date.
+footer_note: Built with plain HTML and CSS.
+
+# Files that should not be published as part of the site.
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
