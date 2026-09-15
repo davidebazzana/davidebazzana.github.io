@@ -7,7 +7,7 @@ lede: >-
   
 ---
 
-PhD student at Sapienza University of Rome under the supervision of Prof. Marco Angelini. His research interests lay at the intersection of *Human-Computer Interaction*, *Artificial Intelligence*, and *Extended Reality*. His research focuses on the development of collaborative Human-AI multimodal and contextualized environments. He holds a Master's degree in Engineering in Computer Science and has worked on the research project ["Edge Vision against Varroa (EV2)"](https://alcorlab.diag.uniroma1.it/projects/ev2), gaining expertise on Frugal AI and Edge-Computing.
+PhD student at Sapienza University of Rome under the supervision of Prof. Marco Angelini. My research interests lay at the intersection of *Human-Computer Interaction*, *Artificial Intelligence*, and *Extended Reality*. I study collaborative Human-AI multimodal and contextualized environments. I hold a Master's degree in Engineering in Computer Science and I worked on the research project ["Edge Vision against Varroa (EV2)"](https://alcorlab.diag.uniroma1.it/projects/ev2), gaining expertise on Frugal AI and Edge-Computing.
 
 
 
