@@ -48,7 +48,9 @@
 
     <div class="contact-block">
       {%- if profile.email and profile.email != "" %}
-      <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+      {%- assign email_parts = profile.email | split: "@" %}
+      {%- assign email_domain_spaced = email_parts[1] | replace: ".", " [dot] " %}
+      <a href="#" class="email-link" data-user="{{ email_parts[0] }}" data-domain="{{ email_parts[1] }}" rel="nofollow">{{ email_parts[0] }} [at] {{ email_domain_spaced }}</a>
       {%- endif %}
       {%- for link in profile.links %}
       <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>
@@ -156,5 +158,19 @@
 
 </div>
 
+<script>
+  // Assembles the email address at runtime so it never appears as a
+  // scannable "user@domain" string in the page's HTML source, which
+  // keeps most automated address-harvesting bots from picking it up.
+  document.querySelectorAll(".email-link").forEach(function (el) {
+    var user = el.getAttribute("data-user");
+    var domain = el.getAttribute("data-domain");
+    if (!user || !domain) return;
+    var address = user + "@" + domain;
+    el.href = "mailto:" + address;
+    el.textContent = address;
+    el.removeAttribute("rel");
+  });
+</script>
 </body>
 </html>

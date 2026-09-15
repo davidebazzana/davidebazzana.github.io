@@ -33,6 +33,12 @@ Every file has comments at the top explaining its fields. The general rules:
 - Publications are shown in the order you list them, with a year heading each time
   the year changes. Keep entries of the same year together, newest year first.
 - The "Last updated" date in the footer is set automatically at build time.
+- The email address in `_data/profile.yml` is written in plain, human-readable
+  form as usual, but the page assembles it with a small script at load time so
+  it never appears as a plain `you@domain` string in the page's source. This
+  keeps most automated address-harvesting bots from picking it up, while the
+  link still works normally for visitors (it shows as spelled-out text such as
+  "you [at] domain [dot] com" for the rare visitor with JavaScript disabled).
 
 ## Look and layout
 
