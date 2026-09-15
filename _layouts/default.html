@@ -159,16 +159,16 @@
 </div>
 
 <script>
-  // Assembles the email address at runtime so it never appears as a
-  // scannable "user@domain" string in the page's HTML source, which
-  // keeps most automated address-harvesting bots from picking it up.
+  // Wires up the mailto: link at runtime from separate data attributes,
+  // so the address never appears as a scannable "user@domain" string in
+  // the page's HTML source, which keeps most automated address-harvesting
+  // bots from picking it up. The visible "... at ... dot ..." text is left
+  // as-is; only the underlying link target is set to the real address.
   document.querySelectorAll(".email-link").forEach(function (el) {
     var user = el.getAttribute("data-user");
     var domain = el.getAttribute("data-domain");
     if (!user || !domain) return;
-    var address = user + "@" + domain;
-    el.href = "mailto:" + address;
-    el.textContent = address;
+    el.href = "mailto:" + user + "@" + domain;
     el.removeAttribute("rel");
   });
 </script>
